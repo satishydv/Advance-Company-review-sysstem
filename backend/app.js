@@ -8,7 +8,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const globalErrorHandler = require("./controllers/errorController");
 const AppError = require("./utils/appError");
 const companyRouter = require("./routes/companyRoutes");
-// const reviewRouter = require("./routes/reviewRoutes");
+const reviewRouter = require("./routes/reviewRoutes");
 
 const app = express();
 
@@ -54,7 +54,7 @@ app.use((req, res, next) => {
 
 // whatever we write here become common for api for company router
 app.use("/api/v1/companies", companyRouter);
-// app.use("/api/v1/reviews", reviewRouter);
+app.use("/api/v1/reviews", reviewRouter);
 
 app.get("/", (req, res) => {
   res.status(200).json({
